@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #3b82f6;
+    --secondary-color: #4a7dff;
+    --tertiary-color: #f0f8ff;
+    --quaternary-color: #bdbdbd;
+    --quinary-color: #5a7cdc;
+    --senary-color: #6d6dde;
+
+    --color-text-1: #372f3f;
+    --color-text-2: #f9f3f3;
+
+    --color-icon-1: #7f1d1d;
+    --color-icon-2: #0284c7;
+    --color-icon-3: #0ea5e9;
+    --color-icon-4: #7c3aed;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(var(--primary-color), var(--secondary-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    background-color: var(--tertiary-color);
+    padding: 2em;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .mode-container {
+    width: 60px;
+    height: 60px;
+    background-color: var(--tertiary-color);
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.4em;
+}
+
+.mode-container:hover {
+    scale: 1.1;
+}
+
+.mode-container:active {
+    scale: 0.9;
+} */
+
+/* campo de pesquisa */
+
+#search {
+    border: 1px solid var(--quaternary-color);
+    border-radius: 10px;
+    color: var(--color-text-1);
+    padding: 4px 12px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+label[for="city-name"] {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#city-name {
+    flex: 1;
+    border: none;
+    font-size: 1em;
+    background: transparent;
+}
+
+#city-name:focus-visible {
+    outline: none;
+    background: transparent;
+}
+
+#search button {
+    color: var(--color-text-1);
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* fim do campo de pesquisa */
+
+
+/* detalhes sobre a cidade */
+
+#weather {
+    display: none;
+}
+
+#weather.show {
+    display: block;
+    margin-top: 20px;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--color-text-1);
+}
+
+#temp {
+    background: linear-gradient(90deg, var(--quinary-color), var(--senary-color));
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    color: var(--color-text-2);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#temp-img {
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
+}
+
+#temp-value {
+    font-size: 50px;
+    line-height: 55px;
+    font-weight: bold;
+}
+
+#temp-description {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* info section  */
+
+#other-infos {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.info {
+    border-radius: 8px;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    background-color: var(--tertiary-color);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    color: var(--color-text-1);
+}
+
+.info h2 {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.info i {
+    font-size: 20px;
+    width: 20%;
+    text-align: center;
+}
+
+#temp-max-icon {
+    color: var(--color-icon-1);
+}
+#temp-min-icon {
+    color: var(--color-icon-2);
+}
+#umidity-icon {
+    color: var(--color-icon-3);
+}
+#wind-icon {
+    color: var(--color-icon-4);
+}
+
+/* alerta */
+
+#alert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 4;
+}
+#alert img {
+    width: 200px;
+}
