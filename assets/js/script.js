@@ -1,11 +1,28 @@
+// // declaração de variaveis
+const informationPanel = document.getElementById('weather');
+const alertText = document.getElementById('alert');
+
+// // features functions
+
+function loading() {
+    showAlert('');
+    informationPanel.classList.remove('loading');
+}
+
+function showAlert(msg) {
+    alertText.innerHTML = msg;
+}
+
 // funções referentes a api e a busca
 document.querySelector('#search').addEventListener('submit', async (event) => {
     event.preventDefault();
+    informationPanel.classList.add('show');
     
     const cityName = document.querySelector('#city-name').value;
     
     if (!cityName) {
-        document.getElementById('weather').classList.remove('show');
+        informationPanel.classList.remove('show');
+        loading();
         showAlert('Você precisa digitar uma cidade... <img src="./assets/img/air_support.svg">');
         return;
     }
@@ -27,9 +44,11 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
             tempIcon: json.weather[0].icon,
             windSpeed: json.wind.speed,
             humidity: json.main.humidity,
-        })
+        });
+        loading();
     } else {
-        document.getElementById('weather').classList.remove('show');
+        informationPanel.classList.remove('show');
+        loading();
 
         showAlert(`Não foi possível localizar... <img src="./assets/img/air_support.svg">`);
     }
@@ -38,8 +57,7 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
 function showInfo(json) {
     showAlert('');
 
-    document.getElementById('weather').classList.add('show');
-
+    
     document.querySelector('#title').innerHTML = `${json.city}, ${json.country}`;
     document.querySelector('#temp-img').setAttribute('src', `https://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
     
@@ -51,20 +69,18 @@ function showInfo(json) {
     document.querySelector('#umidity').innerHTML = `${json.humidity}%`;
 }
 
-function showAlert(msg) {
-    document.querySelector('#alert').innerHTML = msg;
-}
-
 // dark and light mode 
 
-// const modeIcon = document.getElementById('modeIcon');
+const modeIcon = document.getElementById('modeIcon');
 
-// document.getElementById('mode').addEventListener('click', () => {
-//     if (modeIcon.classList.contains('fa-moon')) {
-//         modeIcon.classList.remove('fa-moon');
-//         modeIcon.classList.add('fa-sun');
-//     } else {
-//         modeIcon.classList.remove('fa-sun');
-//         modeIcon.classList.add('fa-moon');
-//     }
-// })
+document.getElementById('mode').addEventListener('click', () => {
+    document.getElementById('container').classList.toggle('dark-mode');
+    
+    if (modeIcon.classList.contains('fa-moon')) {
+        modeIcon.classList.remove('fa-moon');
+        modeIcon.classList.add('fa-sun');
+    } else {
+        modeIcon.classList.remove('fa-sun');
+        modeIcon.classList.add('fa-moon');
+    }
+});
