@@ -106,11 +106,20 @@ label[for="city-name"] {
     background: transparent;
 }
 
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+#city-name::-webkit-search-decoration,
+#city-name::-webkit-search-cancel-button,
+#city-name::-webkit-search-results-button,
+#city-name::-webkit-search-results-decoration {
   -webkit-appearance:none;
+}
+
+#city-name:-webkit-autofill,
+#city-name:-webkit-autofill:hover, 
+#city-name:-webkit-autofill:focus, 
+#city-name:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--color-text-1);
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 #search button {
@@ -250,7 +259,7 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 100%;
     border-radius: 10px;
     background: linear-gradient(-45deg, var(--tertiary-color), var(--primary-color), var(--tertiary-color));
-    background-size: 400%;
+    background-size: 300%;
     animation: loading 1s linear infinite;
 }
 
@@ -303,6 +312,14 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 #container.dark-mode #weather.loading::after {
     background: linear-gradient(-45deg, var(--tertiary-color-dark), var(--primary-color-dark), var(--tertiary-color-dark));
-    background-size: 400%;
+    background-size: 300%;
     animation: loading 1s linear infinite;
+}
+#container.dark-mode #city-name:-webkit-autofill,
+#container.dark-mode #city-name:-webkit-autofill:hover, 
+#container.dark-mode #city-name:-webkit-autofill:focus, 
+#container.dark-mode #city-name:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--color-text-2);
+    transition: background-color 5000s ease-in-out 0s;
 }

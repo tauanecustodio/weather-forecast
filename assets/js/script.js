@@ -4,11 +4,6 @@ const alertText = document.getElementById('alert');
 
 // // features functions
 
-function loading() {
-    showAlert('');
-    informationPanel.classList.remove('loading');
-}
-
 function showAlert(msg) {
     alertText.innerHTML = msg;
 }
@@ -16,13 +11,14 @@ function showAlert(msg) {
 // funções referentes a api e a busca
 document.querySelector('#search').addEventListener('submit', async (event) => {
     event.preventDefault();
-    informationPanel.classList.add('show');
+    showAlert('');
+    informationPanel.classList.add('loading', 'show');
     
     const cityName = document.querySelector('#city-name').value;
     
     if (!cityName) {
+        informationPanel.classList.remove('loading');
         informationPanel.classList.remove('show');
-        loading();
         showAlert('Você precisa digitar uma cidade... <img src="./assets/img/air_support.svg">');
         return;
     }
@@ -45,11 +41,9 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
             windSpeed: json.wind.speed,
             humidity: json.main.humidity,
         });
-        loading();
+        informationPanel.classList.remove('loading');
     } else {
-        informationPanel.classList.remove('show');
-        loading();
-
+        informationPanel.classList.remove('show', 'loading');
         showAlert(`Não foi possível localizar... <img src="./assets/img/air_support.svg">`);
     }
 })
@@ -57,7 +51,6 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
 function showInfo(json) {
     showAlert('');
 
-    
     document.querySelector('#title').innerHTML = `${json.city}, ${json.country}`;
     document.querySelector('#temp-img').setAttribute('src', `https://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
     
