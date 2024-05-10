@@ -163,10 +163,6 @@ label[for="city-name"] {
     border-radius: 20px;
 }
 
-#temp-img {
-    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
-}
-
 #temp-value {
     font-size: 50px;
     line-height: 55px;
